@@ -30,12 +30,12 @@ jobs:
       - name: Ejecutar tests
         run: python -m pytest > resultado_test.txt
 
-      - name: Subir artefact
+      - name: Subir artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
-        name: resultado_test
-        path: resultado_test.txt
+          name: resultado_test
+          path: resultado_test.txt
 
   build:
     needs: test
@@ -55,4 +55,4 @@ jobs:
 
     steps:
       - name: Deploy simulado
-        run: echo "Deploy simulado ejecutado"
+        run: echo "Aplicacion desplegada"

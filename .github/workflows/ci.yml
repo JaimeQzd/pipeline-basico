@@ -1,7 +1,14 @@
-name: Pipeline basico
+name: CI
 
 on:
   push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Ejecutar deploy simulado"
+        required: false
+        default: "no"
 
 jobs:
 
@@ -36,8 +43,9 @@ jobs:
 
   deploy:
     needs: build
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.deploy == 'si'
     runs-on: ubuntu-latest
 
     steps:
-      - name: Simular deploy
-        run: echo "Aplicacion desplegada"
+      - name: Deploy simulado
+        run: echo "Deploy simulado ejecutado"

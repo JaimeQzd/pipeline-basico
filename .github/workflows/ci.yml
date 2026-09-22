@@ -31,11 +31,11 @@ jobs:
         run: python -m pytest > resultado_test.txt
 
       - name: Subir artefact
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-      name: resultado_test
-      path: resultado_test.txt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+        name: resultado_test
+        path: resultado_test.txt
 
   build:
     needs: test
